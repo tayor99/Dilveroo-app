@@ -56,7 +56,7 @@ export default function FeaturedRows({ title, id, description }) {
             genre="Nigerian"
             address={res.address}
             short_description={res.short_description}
-            dishes={[]}
+            dishes={res.dishes}
             long={res.long}
             lat={res.lat}
           />

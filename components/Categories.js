@@ -18,7 +18,7 @@ export default function Categories() {
         setCategories(res);
       });
   }, []);
-  console.log(categories);
+
   return (
     <ScrollView
       horizontal

@@ -1,42 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: [],
+  restaurant: {
+    id: null,
+    imgUrl: null,
+    title: null,
+    rating: null,
+    genre: null,
+    address: null,
+    short_description: null,
+    dishes: null,
+  },
 };
 
-export const basketSlice = createSlice({
-  name: "basket",
+export const restaurantSlice = createSlice({
+  name: "restaurant",
   initialState,
   reducers: {
-    addToBasket: (state, action) => {
-      state.items = [...state.items, action.payload];
-    },
-    removeFromBasket: (state, action) => {
-      const index = state.items.findIndex(
-        (item) => item.id === action.payload.id
-      );
-      let newBasket = [...state.items];
-      if (index >= 0) {
-        newBasket.splice(index, 1);
-      } else {
-        console.warn(
-          `Cant remove product (id : ${action.payload.id}) as its not in basket`
-        );
-      }
-      state.items = newBasket;
+    setRestaurant: (state, action) => {
+      state.restaurant = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
 
-export const { addToBasket, removeFromBasket } = basketSlice.actions;
-export const selctBasketItems = (state) => state.basket.items;
+export const { setRestaurant } = restaurantSlice.actions;
 
-export const selctBasketItemsWithId = (state, id) =>
-  state.basket.items.filter((item) => item.id === id);
-
-export const selectBasketTotal = (state) =>
-  state.basket.items.reduce((total, item) => (total += item.price), 0);
-
-export default basketSlice.reducer;
+export const selectRestaurant = (state) => state.restaurant.restaurant;
+export default restaurantSlice.reducer;
